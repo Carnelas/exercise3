@@ -2,9 +2,9 @@
   "name": "exercise1",
   "version": "0.0.0",
   "private": true,
-  "main": "index.js",
+  "main": "clientMessageApp.js",
   "scripts": {
-    "start": "index.js",
+    "start": "clientMessageApp.js",
     "dev": "DEBUG=exercise1:* nodemon"
   },
   "dependencies": {
