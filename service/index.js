@@ -13,3 +13,4 @@ message = (destination, body) => {
     .then(response => response.data)
 }
 
+export default MessageApp
