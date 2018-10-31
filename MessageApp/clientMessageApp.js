@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const axios = require('axios');
 const bodyParser = require('body-parser')
+import MessageApp from '../service/index'
+
 
 const test = (req, res, next) => {
     let { destination, body } = req.body;
@@ -27,7 +29,7 @@ const test = (req, res, next) => {
     } else next();
 
 
-    app.post('/message', (req, res, next) => {
+    app.post('/message', test(), (req, res, next) => {
         let { destination, body } = req.body;
         axios.post('http://messageapp:3000/message', { destination, body })
             .then(resp => {
