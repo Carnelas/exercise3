@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 import MessageApp from '../service/index'
 
 
-const test = (req, res, next) => {
+const validator = (req, res, next) => {
     let { destination, body } = req.body;
     if (typeof destination != String || typeof body != String) {
         console.log("Error")
@@ -29,7 +29,7 @@ const test = (req, res, next) => {
     } else next();
 
 
-    app.post('/message', test(), (req, res, next) => {
+    app.post('/message', validator(), (req, res, next) => {
         let { destination, body } = req.body;
         axios.post('http://messageapp:3000/message', { destination, body })
             .then(resp => {
