@@ -1,11 +1,19 @@
-const express = require('express');
-const mongoose = require('mongoose');
+const express = require("express");
+const bodyParser = require("body-parser");
 const app = express();
 
-mongoose
-  .connect('http://localhost:27017')
-  .then(() => {
-    console.log(`Connected to Mongo on http://localhost:27017`)
-  }).catch(err => {
-    console.error('Error connecting to mongo', err)
-  });
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+const message = require("./router/message");
+app.use("/message", message);
+
+const sendMessage = require('./routes/sendMessage')
+const getMessages = require('./routes/getMessages');
+app.use('/message', sendMessage)
+app.use('/messages', getMessages);
+
+app.listen(process.env.SERVICE_PORT || 9001, function() {
+  console.log(`Server Express Ready on port ${ process.env.SERVICE_PORT || 9001 }!`);
+});
+
