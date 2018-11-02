@@ -2,9 +2,9 @@
   "name": "exersice1",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "clientMessageApp.js",
   "scripts": {
-    "start": "app.js"
+    "start": "clientMessageApp.js"
   },
   "author": "",
   "license": "ISC",

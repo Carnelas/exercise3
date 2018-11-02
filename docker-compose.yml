@@ -2,11 +2,10 @@ version: "3"
 services:
   exercise3:
     build: .
+      context: /service
+      dockerfile: Dockerfile
     ports:
      - "9003:9003"
-     depends_on:
-      - mongodb
-    command: ["mongodb:27027","-t","5", "--","node", "app.js"]
   messageapp:
     image: cabify/backend-bootcamp-messageapp
     ports:
@@ -16,4 +15,4 @@ services:
     volumes:
       - ./data/db:/data/db
     ports:
-      - "27017:27017"
+      - 27017:27017
