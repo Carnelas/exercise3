@@ -29,11 +29,13 @@ const validator = (req, res, next) => {
 
     app.post('/messages', validator(), (req, res, next) => {
         let { destination, body } = req.body
-        axios.post('http://messageapp:3000/messages', { destination, body })
+        axios.post('http://messageapp:3000/messages', { destination, body, sent, confirmed })
             .then(() => {
                 return new Message({
                     destination,
-                    body
+                    body,
+                    sent:true,
+                    confirmed: true
                 })
                     .save()
             })
