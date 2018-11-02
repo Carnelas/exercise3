@@ -1,9 +1,7 @@
 version: "3"
 services:
   exercise3:
-    build: .
-      context: /service
-      dockerfile: Dockerfile
+    build: service
     ports:
      - "9003:9003"
   messageapp:

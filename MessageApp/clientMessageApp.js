@@ -3,7 +3,7 @@ import axios from 'axios';
 class MessageApp {
     constructor() {
         this.service = axios.create({
-            baseURL: `http://localhost:9001`
+            baseURL: `http://messageapp:9001`
         })
     }
 
