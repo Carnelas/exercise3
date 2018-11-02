@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
+const mongoose = require('mongoose');
 
 let connectRetry = function() {
   return mongoose.connect('mongodb://mongodb:27017/message', {useNewUrlParser: true}, function(err) {
