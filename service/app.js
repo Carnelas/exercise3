@@ -3,8 +3,8 @@ const bodyParser = require("body-parser");
 const app = express();
 const mongoose = require('mongoose');
 
-let connectRetry = function() {
-  return mongoose.connect('mongodb://mongodb:27017/message', {useNewUrlParser: true}, function(err) {
+let connectRetry = function () {
+  return mongoose.connect('mongodb://mongodb:27017/messages', { useNewUrlParser: true }, function (err) {
     if (err) {
       console.error('Error connecting to mongo - retrying in 5 seconds', err);
       setTimeout(connectRetry, 5000);
@@ -15,15 +15,15 @@ let connectRetry = function() {
 };
 connectRetry();
 
-app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-const sendMessage = require('./routes/sendMessages')
+const sendMessages = require('./routes/sendMessages')
 const getMessages = require('./routes/getMessages');
-app.use('/messages', sendMessage)
+app.use('/messages', sendMessages)
 app.use('/messages', getMessages);
 
-app.listen(process.env.SERVICE_PORT || 9001, function() {
-  console.log(`Server Express Ready on port ${ process.env.SERVICE_PORT || 9001 }!`);
-});
+app.listen(9001, () => {
+  console.log('listen on port 9001');
+})
 
