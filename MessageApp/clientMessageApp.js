@@ -7,8 +7,8 @@ class MessageApp {
         })
     }
 
-sendMessage = (destination, body) => {
-    return this.service.post('/message', {destination, body})
+sendMessages = (destination, body) => {
+    return this.service.post('/messages', {destination, body})
     .then(response => response.data)
     .catch(error => error.response)
 }
